@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">QuizzTime</string>
+    <string name="please_click_back_again_to_exit" />
+    <string name="please_wait">Please Wait</string>
+</resources>
