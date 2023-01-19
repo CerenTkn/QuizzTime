@@ -10,6 +10,8 @@ import com.example.quizztime.databinding.ActivityMainBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.auth.User
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_main.et_email
+import kotlinx.android.synthetic.main.activity_main.et_password
 
 class MainActivity : BaseActivity() {
 
@@ -31,12 +33,22 @@ class MainActivity : BaseActivity() {
             signInRegisteredUser()
 
         }
+        signUp.setOnClickListener {
+            goToSignUp()
+        }
+
+    }
+
+    fun goToSignUp(){
+        startActivity(Intent(this@MainActivity, SignUpActivity::class.java))
+        this.finish()
+
 
     }
 
     fun signInSuccess(user: User){
         hideProgressDialog()
-        startActivity(Intent(this@MainActivity, MainActivity::class.java))
+        startActivity(Intent(this@MainActivity, QuizQuestionsActivity::class.java))
         this.finish()
     }
 

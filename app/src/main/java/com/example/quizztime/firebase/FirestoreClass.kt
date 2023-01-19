@@ -10,7 +10,7 @@ import com.google.firebase.firestore.auth.User
 class FirestoreClass {
     private val mFireStore = FirebaseFirestore.getInstance()
 
-    fun registerUser(activity: SignUpActivity, userInfo: User){
+    fun registerUser(activity: SignUpActivity, userInfo: com.example.quizztime.model.User){
         mFireStore.collection(Constants.USERS).document(getCurrentUserId()).set(userInfo, SetOptions.merge())
             .addOnSuccessListener {
                 activity.userRegisteredSuccess()

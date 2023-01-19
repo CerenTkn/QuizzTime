@@ -12,12 +12,13 @@ import kotlinx.android.synthetic.main.dialog_progress.*
 
 open class BaseActivity : AppCompatActivity() {
 
-    private var doubleBackToExitPressedOnce = false
     private lateinit var mProgressDialog: Dialog
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+
     }
 
     /**
@@ -40,20 +41,7 @@ open class BaseActivity : AppCompatActivity() {
     fun getCurrentUserID(): String {
         return FirebaseAuth.getInstance().currentUser!!.uid
     }
-    fun doubleBackToExit() {
-        if (doubleBackToExitPressedOnce) {
-            super.onBackPressed()
-            return
-        }
-        this.doubleBackToExitPressedOnce = true
-        Toast.makeText(
-            this,
-            resources.getString(R.string.please_click_back_again_to_exit),
-            Toast.LENGTH_SHORT
-        ).show()
 
-        Handler().postDelayed({ doubleBackToExitPressedOnce = false }, 2000)
-    }
 
     fun hideProgressDialog() {
         mProgressDialog.dismiss()
