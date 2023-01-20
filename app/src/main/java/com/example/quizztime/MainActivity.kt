@@ -96,17 +96,7 @@ class MainActivity : BaseActivity() {
 
 
 
-    override fun onStart() {
-        super.onStart()
 
-        val currentUser = auth.currentUser
-        if (currentUser != null){
-            intent = Intent(this@MainActivity, QuizQuestionsActivity::class.java)
-            startActivity(intent)
-            finish()
-        }
-
-    }
 
     fun startClicked(view: View){
 
@@ -140,7 +130,6 @@ fun signIn(){
     val password = binding.etPassword.text.toString()
     auth.signInWithEmailAndPassword(email, password)
         .addOnCompleteListener (OnCompleteListener<AuthResult>() {
-            if ()
         })
 
 }

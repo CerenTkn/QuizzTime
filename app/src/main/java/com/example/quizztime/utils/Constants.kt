@@ -6,11 +6,5 @@ import com.example.quizztime.model.Question
 object Constants {
     const val USERS: String = "users"
 
-    fun getQuestions(): ArrayList<Question>{
-        val questionList= ArrayList<Question>()
 
-
-
-
-    }
 }
