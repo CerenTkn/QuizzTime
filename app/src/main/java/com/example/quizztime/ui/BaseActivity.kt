@@ -1,14 +1,12 @@
-package com.example.quizztime
+package com.example.quizztime.ui
 
 import android.app.Dialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
-import android.widget.Toast
 import androidx.core.content.ContextCompat
+import com.example.quizztime.R
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
-import kotlinx.android.synthetic.main.dialog_progress.*
 
 open class BaseActivity : AppCompatActivity() {
 
@@ -30,9 +28,6 @@ open class BaseActivity : AppCompatActivity() {
         /*Set the screen content from a layout resource.
         The resource will be inflated, adding all top-level views to the screen.*/
         mProgressDialog.setContentView(R.layout.dialog_progress)
-
-        mProgressDialog.tv_progress_text.text = text
-
         //Start the dialog and display it on screen.
         mProgressDialog.show()
     }
@@ -41,7 +36,6 @@ open class BaseActivity : AppCompatActivity() {
     fun getCurrentUserID(): String {
         return FirebaseAuth.getInstance().currentUser!!.uid
     }
-
 
     fun hideProgressDialog() {
         mProgressDialog.dismiss()

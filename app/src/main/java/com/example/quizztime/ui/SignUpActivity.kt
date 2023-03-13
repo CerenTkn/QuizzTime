@@ -1,20 +1,15 @@
-package com.example.quizztime
+package com.example.quizztime.ui
 
-import FirestoreClass
+import android.content.ContentValues.TAG
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import android.view.WindowManager
 import android.widget.Toast
+import com.example.quizztime.R
 import com.example.quizztime.databinding.ActivitySignUpBinding
-import com.example.quizztime.model.User
-import com.google.android.gms.tasks.OnCompleteListener
-import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_sign_up.*
-import kotlinx.android.synthetic.main.activity_sign_up.et_email
-import kotlinx.android.synthetic.main.activity_sign_up.et_password
+
 
 class SignUpActivity : BaseActivity() {
 
@@ -32,11 +27,13 @@ class SignUpActivity : BaseActivity() {
             WindowManager.LayoutParams.FLAG_FULLSCREEN
         )
 
-       btnsignUp.setOnClickListener {
+       binding.btnsignUp.setOnClickListener {
+           Log.e("ceren","buton sign up tıklandı")
             registerUser()
         }
     }
 
+    /*
     fun  userRegisteredSuccess() {
         Toast.makeText(this@SignUpActivity,
             "You have successfully registered with email.",
@@ -52,29 +49,44 @@ class SignUpActivity : BaseActivity() {
 
     }
 
+     */
+
     private fun registerUser(){
 
-        val name: String = et_name.text.toString().trim { it <= ' '}
-        val email: String = et_email.text.toString().trim { it <= ' '}
-        val password: String = et_password.text.toString().trim { it <= ' '}
+        with(binding){
+            val name: String = etName.text.toString().trim { it <= ' '}
+            val email: String = etEmail.text.toString().trim { it <= ' '}
+            val password: String = etPassword.text.toString().trim { it <= ' '}
 
-        if (validateForm(name, email, password)) {
-            showProgressDialog(resources.getString(R.string.please_wait))
-            FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(
-                    OnCompleteListener<AuthResult> { task ->
+            if (validateForm(name, email, password)) {
+                Log.e("ceren","form validate true")
+                showProgressDialog(resources.getString(R.string.please_wait))
+                auth.createUserWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(this@SignUpActivity) { task ->
                         if (task.isSuccessful) {
+                            Log.d(TAG, "createUserWithEmail:success")
+                            val user = auth.currentUser
+
+
+
+                            /*
                             val firebaseUser: FirebaseUser = task.result!!.user!!
                             val registeredEmail = firebaseUser.email!!
-                            val user = User(name, email, password )
+                            val user = User(name, email, password)
 
-                            FirestoreClass().registerUser(this, user)
-                        }else{
-                            Toast.makeText(this@SignUpActivity, "Registration failed",
-                                Toast.LENGTH_SHORT).show()
+                            FirestoreClass().registerUser(this@SignUpActivity, user)
+
+                             */
+                        } else {
+                            Log.w(TAG, "createUserWithEmail:failure", task.exception)
+                            Toast.makeText(
+                                this@SignUpActivity, "Registration failed",
+                                Toast.LENGTH_SHORT
+                            ).show()
                         }
                     }
-                )
+            }
+
         }
 
     }
