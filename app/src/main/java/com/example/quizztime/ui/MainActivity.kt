@@ -74,6 +74,10 @@ class MainActivity : BaseActivity() {
         this.finish()
     }
 
+    private fun test() {
+        //test
+    }
+
     private fun signInRegisteredUser(){
 
         val email : String = binding.etEmail.text.toString().trim{it <= ' '}
