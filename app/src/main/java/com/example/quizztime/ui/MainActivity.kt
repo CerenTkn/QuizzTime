@@ -13,7 +13,7 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.auth.User
 
 
-class MainActivity : BaseActivity() {
+class  MainActivity : BaseActivity() {
 
     private lateinit var binding : ActivityMainBinding
     private lateinit var auth : FirebaseAuth

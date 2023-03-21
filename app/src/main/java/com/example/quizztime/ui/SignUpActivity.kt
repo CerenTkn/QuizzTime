@@ -1,6 +1,6 @@
 package com.example.quizztime.ui
-
 import android.content.ContentValues.TAG
+import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
@@ -14,12 +14,14 @@ import com.google.firebase.auth.FirebaseAuth
 class SignUpActivity : BaseActivity() {
 
     private lateinit var binding : ActivitySignUpBinding
-    private lateinit var auth : FirebaseAuth
+    private lateinit var firebaseauth : FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySignUpBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        firebaseauth = FirebaseAuth.getInstance()
+
 
         // This is used to hide the status bar and make the splash screen as a full screen activity.
         window.setFlags(
@@ -29,6 +31,7 @@ class SignUpActivity : BaseActivity() {
 
        binding.btnsignUp.setOnClickListener {
            Log.e("ceren","buton sign up tıklandı")
+
             registerUser()
         }
     }
@@ -52,7 +55,6 @@ class SignUpActivity : BaseActivity() {
      */
 
     private fun registerUser(){
-
         with(binding){
             val name: String = etName.text.toString().trim { it <= ' '}
             val email: String = etEmail.text.toString().trim { it <= ' '}
@@ -61,12 +63,13 @@ class SignUpActivity : BaseActivity() {
             if (validateForm(name, email, password)) {
                 Log.e("ceren","form validate true")
                 showProgressDialog(resources.getString(R.string.please_wait))
-                auth.createUserWithEmailAndPassword(email, password)
+                firebaseauth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this@SignUpActivity) { task ->
                         if (task.isSuccessful) {
                             Log.d(TAG, "createUserWithEmail:success")
-                            val user = auth.currentUser
 
+                            val intent = Intent(this@SignUpActivity, MainActivity::class.java)
+                            startActivity(intent)
 
 
                             /*
