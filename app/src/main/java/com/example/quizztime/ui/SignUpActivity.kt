@@ -14,13 +14,13 @@ import com.google.firebase.auth.FirebaseAuth
 class SignUpActivity : BaseActivity() {
 
     private lateinit var binding : ActivitySignUpBinding
-    private lateinit var firebaseauth : FirebaseAuth
+    private lateinit var firebaseAuth : FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySignUpBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        firebaseauth = FirebaseAuth.getInstance()
+        firebaseAuth = FirebaseAuth.getInstance()
 
 
         // This is used to hide the status bar and make the splash screen as a full screen activity.
@@ -63,7 +63,7 @@ class SignUpActivity : BaseActivity() {
             if (validateForm(name, email, password)) {
                 Log.e("ceren","form validate true")
                 showProgressDialog(resources.getString(R.string.please_wait))
-                firebaseauth.createUserWithEmailAndPassword(email, password)
+                firebaseAuth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this@SignUpActivity) { task ->
                         if (task.isSuccessful) {
                             Log.d(TAG, "createUserWithEmail:success")
@@ -112,28 +112,4 @@ class SignUpActivity : BaseActivity() {
             }
         }
     }
-    /*
-
-    fun signUpClicked(view: View){
-
-        binding.btnSignUp.setOnClickListener{
-
-            val email = binding.etEmail.text.toString()
-            val password = binding.etPassword.text.toString()
-
-            if (email.isEmpty() || password.isEmpty()){
-                Toast.makeText(this@SignUpActivity, "Please enter your email and password", Toast.LENGTH_LONG).show()
-            }else{
-                auth.createUserWithEmailAndPassword(email, password).addOnSuccessListener {
-                    intent = Intent(this@SignUpActivity, QuizQuestionsActivity::class.java)
-                    startActivity(intent)
-                    finish()
-                }.addOnFailureListener{
-                    Toast.makeText(this@SignUpActivity, it.localizedMessage, Toast.LENGTH_LONG).show()
-                }
-            }
-        }
-    }
-
-     */
 }
