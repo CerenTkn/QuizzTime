@@ -6,14 +6,87 @@
     android:layout_height="match_parent"
     tools:context=".ui.QuizCardsActivity">
 
-    <TextView
-        android:id="@+id/a"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="Sign Up!"
-        android:textColor="@color/black"
-        android:textSize="35sp"
-        android:textStyle="bold" ></TextView>
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/quiztv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="My Quizzes"
+                android:fontFamily="casual"
+                android:textSize="30sp"
+                android:textColor="@color/majorelle_blue"
+                android:layout_margin="20dp" />
+
+            <GridLayout
+                android:id="@+id/grid"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:rowCount="5"
+                android:columnCount="2"
+                android:layout_margin="5dp"
+                android:alignmentMode="alignMargins"
+                android:layout_gravity="center_horizontal"
+                android:columnOrderPreserved="false">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardflag"
+                    android:layout_height="170dp"
+                    android:layout_width="170dp"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="5dp"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardPreventCornerOverlap="true"
+                    app:cardUseCompatPadding="true"
+
+                    android:layout_margin="10dp">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:gravity="center">
+
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:src="@drawable/flag"
+                            android:layout_marginTop="12dp"
+                            />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Flags"
+                            android:textColor="@color/majorelle_blue"
+                            android:textSize="25sp"
+                            android:layout_marginTop="20dp"/>
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+            </GridLayout>
+
+
+
+
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
