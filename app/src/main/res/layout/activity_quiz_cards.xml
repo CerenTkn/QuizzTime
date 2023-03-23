@@ -49,6 +49,7 @@
                     app:cardBackgroundColor="@color/white"
                     app:cardPreventCornerOverlap="true"
                     app:cardUseCompatPadding="true"
+                    android:foreground="?android:attr/selectableItemBackground"
 
                     android:layout_margin="10dp">
 

@@ -17,6 +17,7 @@ class QuizCardsActivity : AppCompatActivity() {
         binding = ActivityQuizCardsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
         setupCardView()
     }
 
