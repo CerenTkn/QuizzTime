@@ -1,5 +1,6 @@
 package com.example.quizztime.ui
 
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
@@ -13,7 +14,7 @@ import com.example.quizztime.databinding.ActivityQuizTimeBinding
 import com.example.quizztime.model.Question
 import com.example.quizztime.utils.Constants
 
-class QuizTimeActivity : AppCompatActivity(), View.OnClickListener{
+open class QuizTimeActivity : AppCompatActivity(), View.OnClickListener{
 
     //Create global variables for the views in the layout
     private var progressBar: ProgressBar?= null
@@ -144,8 +145,9 @@ class QuizTimeActivity : AppCompatActivity(), View.OnClickListener{
                             setQuestion()
                         }
                         else -> {
-                            Toast.makeText(this@QuizTimeActivity, "You have successfully completed the quiz. Your Score is $mCorrectAnswers"
-                                , Toast.LENGTH_SHORT).show()
+                            val intent = Intent(this@QuizTimeActivity, ResultActivity::class.java)
+                            startActivity(intent)
+
                         }
                     }
                 }
