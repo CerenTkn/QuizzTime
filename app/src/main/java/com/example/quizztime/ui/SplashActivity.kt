@@ -23,7 +23,7 @@ class SplashActivity : AppCompatActivity() {
         Handler(Looper.getMainLooper()).postDelayed({
             val intent = Intent(this@SplashActivity, MainActivity::class.java)
             startActivity(intent)
-        }, 3000)  //is the delayed time in milliseconds
+        }, 2000)  //is the delayed time in milliseconds
 
     }
 }

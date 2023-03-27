@@ -12,8 +12,9 @@
         <entry key="app/src/main/res/drawable/selected_option_border_bg.xml" value="0.2315" />
         <entry key="app/src/main/res/drawable/wrong_option_border.xml" value="0.2315" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.28657443281533057" />
-        <entry key="app/src/main/res/layout/activity_quiz_cards.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_quiz_time.xml" value="0.27075042724609377" />
+        <entry key="app/src/main/res/layout/activity_quiz_cards.xml" value="0.295306396484375" />
+        <entry key="app/src/main/res/layout/activity_quiz_time.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_result.xml" value="0.3098958333333333" />
         <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.2947916666666667" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.15520833333333334" />
         <entry key="app/src/main/res/layout/dialog_progress.xml" value="0.29528985507246375" />

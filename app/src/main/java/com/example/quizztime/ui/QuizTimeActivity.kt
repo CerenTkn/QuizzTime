@@ -29,7 +29,7 @@ class QuizTimeActivity : AppCompatActivity(), View.OnClickListener{
         binding = ActivityQuizTimeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setQuestion()
+
 
         with(binding){
             tvOptionOne.setOnClickListener (this@QuizTimeActivity)
@@ -37,18 +37,33 @@ class QuizTimeActivity : AppCompatActivity(), View.OnClickListener{
             tvOptionThree.setOnClickListener (this@QuizTimeActivity)
             tvOptionFour.setOnClickListener (this@QuizTimeActivity)
             btnSubmit.setOnClickListener (this@QuizTimeActivity)
-
-
         }
 
+
         mQuestionList = Constants.getQuestions()
+        setQuestion()
+
+
     }
 
     private fun setQuestion(){
         Log.e("ceren", "set question")
 
         //Getting the question from the list with the help of current position
-        val question: Question = mQuestionList!![mCurrentPosition - 1]
+        if (mQuestionList?.size ?: 0 > 0){
+            val question: Question = mQuestionList!![mCurrentPosition - 1]
+
+            with(binding){
+                tvQuestion.text = question.questions
+                ivImage.setImageResource(question.image)
+                tvOptionOne.text = question.optionOne
+                tvOptionTwo.text = question.optionTwo
+                tvOptionThree.text = question.optionThree
+                tvOptionFour.text = question.optionFour
+            }
+        }else{
+            Toast.makeText(this@QuizTimeActivity, "error", Toast.LENGTH_SHORT).show()
+        }
         defaultOptionsView()
         Log.e("ceren", "val question")
 
@@ -64,15 +79,6 @@ class QuizTimeActivity : AppCompatActivity(), View.OnClickListener{
 
         //setting up the progress text
         binding.tvProgress.text = "$mCurrentPosition" + "/" + progressBar?.max
-
-        with(binding){
-            tvQuestion.text = question.questions
-            ivImage.setImageResource(question.image)
-            tvOptionOne.text = question.optionOne
-            tvOptionTwo.text = question.optionTwo
-            tvOptionThree.text = question.optionThree
-            tvOptionFour.text = question.optionFour
-        }
 
 
     }
@@ -133,12 +139,10 @@ class QuizTimeActivity : AppCompatActivity(), View.OnClickListener{
 
                 if (mSelectedOptionPosition == 0) {
                     mCurrentPosition++
-
                     when {
                         mCurrentPosition <= mQuestionList!!.size -> {
                             setQuestion()
                         }
-
                         else -> {
                             Toast.makeText(this@QuizTimeActivity, "You have successfully completed the quiz. Your Score is $mCorrectAnswers"
                                 , Toast.LENGTH_SHORT).show()
@@ -165,8 +169,6 @@ class QuizTimeActivity : AppCompatActivity(), View.OnClickListener{
                     }
                     mSelectedOptionPosition = 0
                 }
-
-
             }
         }
     }
