@@ -8,6 +8,7 @@ import android.view.WindowManager
 import android.widget.Toast
 import com.example.quizztime.R
 import com.example.quizztime.databinding.ActivitySignUpBinding
+import com.example.quizztime.utils.Constants
 import com.google.firebase.auth.FirebaseAuth
 
 
@@ -51,7 +52,6 @@ class SignUpActivity : BaseActivity() {
         finish()
 
     }
-
      */
 
     private fun registerUser(){
@@ -69,6 +69,7 @@ class SignUpActivity : BaseActivity() {
                             Log.d(TAG, "createUserWithEmail:success")
 
                             val intent = Intent(this@SignUpActivity, MainActivity::class.java)
+                            intent.putExtra(Constants.USER_NAME, binding.etName.text.toString())
                             startActivity(intent)
 
 

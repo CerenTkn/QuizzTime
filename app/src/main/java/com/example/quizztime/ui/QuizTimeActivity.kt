@@ -22,6 +22,8 @@ open class QuizTimeActivity : AppCompatActivity(), View.OnClickListener{
     private var mQuestionList: ArrayList<Question>? = null
     private var mSelectedOptionPosition: Int = 0
     private var mCorrectAnswers: Int = 0
+    private var mUserName : String? = null
+
 
     private lateinit var binding: ActivityQuizTimeBinding
 
@@ -29,8 +31,6 @@ open class QuizTimeActivity : AppCompatActivity(), View.OnClickListener{
         super.onCreate(savedInstanceState)
         binding = ActivityQuizTimeBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-
 
         with(binding){
             tvOptionOne.setOnClickListener (this@QuizTimeActivity)
@@ -146,7 +146,11 @@ open class QuizTimeActivity : AppCompatActivity(), View.OnClickListener{
                         }
                         else -> {
                             val intent = Intent(this@QuizTimeActivity, ResultActivity::class.java)
+                            intent.putExtra(Constants.USER_NAME, mUserName)
+                            intent.putExtra(Constants.CORRECT_ANSWERS, mCorrectAnswers)
+                            intent.putExtra(Constants.TOTAL_QUESTIONS, mQuestionList?.size)
                             startActivity(intent)
+                            finish()
 
                         }
                     }

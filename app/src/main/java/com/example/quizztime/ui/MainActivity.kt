@@ -8,6 +8,7 @@ import android.view.WindowManager
 import android.widget.Toast
 import com.example.quizztime.R
 import com.example.quizztime.databinding.ActivityMainBinding
+import com.example.quizztime.utils.Constants
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.auth.User
@@ -17,6 +18,7 @@ class  MainActivity : BaseActivity() {
 
     private lateinit var binding : ActivityMainBinding
     private lateinit var firebaseAuth : FirebaseAuth
+    private var mUserName : String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,6 +26,7 @@ class  MainActivity : BaseActivity() {
         setContentView(binding.root)
         firebaseAuth = FirebaseAuth.getInstance()
 
+        mUserName = intent.getStringExtra(Constants.USER_NAME )
 
         window.setFlags(
             WindowManager.LayoutParams.FLAG_FULLSCREEN,
@@ -33,8 +36,6 @@ class  MainActivity : BaseActivity() {
         binding.btnStart.setOnClickListener {
             Log.e("ceren","buton start tıklandı")
             signInRegisteredUser()
-
-
         }
         binding.signUp.setOnClickListener {
             Log.e("ceren","buton sign up tıklandı")
@@ -42,7 +43,7 @@ class  MainActivity : BaseActivity() {
             this.finish()        }
 
     }
-
+/*
     public override fun onStart() {
         super.onStart()
         val currentUser = firebaseAuth.currentUser
@@ -50,6 +51,8 @@ class  MainActivity : BaseActivity() {
            // showErrorSnackBar("Please Sign Up")
         }
     }
+
+ */
 
 
     private fun signInRegisteredUser(){
