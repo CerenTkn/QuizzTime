@@ -3,6 +3,7 @@ package com.example.quizztime.ui
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.WindowManager
 import com.example.quizztime.R
 import com.example.quizztime.databinding.ActivityResultBinding
 import com.example.quizztime.utils.Constants
@@ -15,6 +16,11 @@ class ResultActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityResultBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        window.setFlags(
+            WindowManager.LayoutParams.FLAG_FULLSCREEN,
+            WindowManager.LayoutParams.FLAG_FULLSCREEN
+        )
 
 
         binding.tvName.text = intent.getStringExtra(Constants.USER_NAME)

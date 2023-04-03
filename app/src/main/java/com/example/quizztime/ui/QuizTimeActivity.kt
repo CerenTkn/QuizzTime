@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.WindowManager
 import android.widget.*
 import androidx.core.content.ContextCompat
 import com.example.quizztime.R
@@ -32,6 +33,11 @@ open class QuizTimeActivity : AppCompatActivity(), View.OnClickListener{
         binding = ActivityQuizTimeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        window.setFlags(
+            WindowManager.LayoutParams.FLAG_FULLSCREEN,
+            WindowManager.LayoutParams.FLAG_FULLSCREEN
+        )
+
         with(binding){
             tvOptionOne.setOnClickListener (this@QuizTimeActivity)
             tvOptionTwo.setOnClickListener (this@QuizTimeActivity)
@@ -39,19 +45,15 @@ open class QuizTimeActivity : AppCompatActivity(), View.OnClickListener{
             tvOptionFour.setOnClickListener (this@QuizTimeActivity)
             btnSubmit.setOnClickListener (this@QuizTimeActivity)
         }
-
-
         mQuestionList = Constants.getQuestions()
         setQuestion()
-
-
     }
 
     private fun setQuestion(){
         Log.e("ceren", "set question")
 
         //Getting the question from the list with the help of current position
-        if (mQuestionList?.size ?: 0 > 0){
+        if ((mQuestionList?.size ?: 0) > 0){
             val question: Question = mQuestionList!![mCurrentPosition - 1]
 
             with(binding){

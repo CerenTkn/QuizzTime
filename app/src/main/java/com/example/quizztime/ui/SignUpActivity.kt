@@ -16,12 +16,16 @@ class SignUpActivity : BaseActivity() {
 
     private lateinit var binding : ActivitySignUpBinding
     private lateinit var firebaseAuth : FirebaseAuth
+    private var mUserName : String? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySignUpBinding.inflate(layoutInflater)
         setContentView(binding.root)
         firebaseAuth = FirebaseAuth.getInstance()
+        mUserName = intent.getStringExtra(Constants.USER_NAME )
+
 
 
         // This is used to hide the status bar and make the splash screen as a full screen activity.
