@@ -27,7 +27,6 @@ class SignUpActivity : BaseActivity() {
         mUserName = intent.getStringExtra(Constants.USER_NAME )
 
 
-
         // This is used to hide the status bar and make the splash screen as a full screen activity.
         window.setFlags(
             WindowManager.LayoutParams.FLAG_FULLSCREEN,
@@ -40,23 +39,6 @@ class SignUpActivity : BaseActivity() {
             registerUser()
         }
     }
-
-    /*
-    fun  userRegisteredSuccess() {
-        Toast.makeText(this@SignUpActivity,
-            "You have successfully registered with email.",
-            Toast.LENGTH_SHORT).show()
-        hideProgressDialog()
-
-        /**
-         * Here the new user registered is automatically signed-in so we just sign-out the user from firebase
-         * and send him to Intro Screen for Sign-In
-         */
-        FirebaseAuth.getInstance().signOut()
-        finish()
-
-    }
-     */
 
     private fun registerUser(){
         with(binding){

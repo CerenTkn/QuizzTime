@@ -43,17 +43,6 @@ class  MainActivity : BaseActivity() {
             this.finish()        }
 
     }
-/*
-    public override fun onStart() {
-        super.onStart()
-        val currentUser = firebaseAuth.currentUser
-        if (currentUser != null){
-           // showErrorSnackBar("Please Sign Up")
-        }
-    }
-
- */
-
 
     private fun signInRegisteredUser(){
 
