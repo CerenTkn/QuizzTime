@@ -24,7 +24,7 @@ class SignUpActivity : BaseActivity() {
         binding = ActivitySignUpBinding.inflate(layoutInflater)
         setContentView(binding.root)
         firebaseAuth = FirebaseAuth.getInstance()
-        mUserName = intent.getStringExtra(Constants.USER_NAME )
+
 
 
         // This is used to hide the status bar and make the splash screen as a full screen activity.
@@ -55,6 +55,7 @@ class SignUpActivity : BaseActivity() {
                             Log.d(TAG, "createUserWithEmail:success")
 
                             val intent = Intent(this@SignUpActivity, MainActivity::class.java)
+                            Log.e("ceren", "sign up put data")
                             intent.putExtra(Constants.USER_NAME, binding.etName.text.toString())
                             startActivity(intent)
 
@@ -76,9 +77,7 @@ class SignUpActivity : BaseActivity() {
                         }
                     }
             }
-
         }
-
     }
 
     private fun validateForm(name: String, email:String, password:String) : Boolean{

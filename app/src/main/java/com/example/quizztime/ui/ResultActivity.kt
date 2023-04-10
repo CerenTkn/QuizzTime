@@ -3,6 +3,7 @@ package com.example.quizztime.ui
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.WindowManager
 import com.example.quizztime.R
 import com.example.quizztime.databinding.ActivityResultBinding
@@ -24,6 +25,7 @@ class ResultActivity : AppCompatActivity() {
 
 
         binding.tvName.text = intent.getStringExtra(Constants.USER_NAME)
+        Log.e("ceren", "result get name")
 
         val totalQuestions = intent.getIntExtra(Constants.TOTAL_QUESTIONS, 0)
         val correctAnswers = intent.getIntExtra(Constants.CORRECT_ANSWERS, 0)

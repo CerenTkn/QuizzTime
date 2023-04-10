@@ -33,6 +33,10 @@ open class QuizTimeActivity : AppCompatActivity(), View.OnClickListener{
         binding = ActivityQuizTimeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        mUserName = intent.getStringExtra(Constants.USER_NAME )
+        Log.e("ceren", "quiz time get data")
+
+
         window.setFlags(
             WindowManager.LayoutParams.FLAG_FULLSCREEN,
             WindowManager.LayoutParams.FLAG_FULLSCREEN
@@ -149,6 +153,7 @@ open class QuizTimeActivity : AppCompatActivity(), View.OnClickListener{
                         else -> {
                             val intent = Intent(this@QuizTimeActivity, ResultActivity::class.java)
                             intent.putExtra(Constants.USER_NAME, mUserName)
+                            Log.e("ceren", "quiz time put name")
                             intent.putExtra(Constants.CORRECT_ANSWERS, mCorrectAnswers)
                             intent.putExtra(Constants.TOTAL_QUESTIONS, mQuestionList?.size)
                             startActivity(intent)

@@ -22,6 +22,7 @@ class QuizCardsActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         mUserName = intent.getStringExtra(Constants.USER_NAME )
+        Log.e("ceren", "quiz card get data")
 
 
         window.setFlags(

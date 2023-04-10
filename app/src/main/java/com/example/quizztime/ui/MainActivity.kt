@@ -27,6 +27,7 @@ class  MainActivity : BaseActivity() {
         firebaseAuth = FirebaseAuth.getInstance()
 
         mUserName = intent.getStringExtra(Constants.USER_NAME )
+        Log.e("ceren", "main get data")
 
         window.setFlags(
             WindowManager.LayoutParams.FLAG_FULLSCREEN,
